@@ -1,11 +1,11 @@
-import Content from '@/components/content'
+import Main from '@/components/main'
 import Header from '@/components/header'
 
 const Home = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex h-full flex-col">
       <Header />
-      <Content />
+      <Main />
     </div>
   )
 }

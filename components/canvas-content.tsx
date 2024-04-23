@@ -8,7 +8,6 @@ import { useEffect, useRef, useState } from 'react'
 
 const CanvasContent = () => {
   const { userInfo } = useUserInfoStore()
-  const { name, age, phone } = userInfo
   const [image, setImage] = useState<CanvasImageSource>()
 
   useEffect(() => {
@@ -24,7 +23,15 @@ const CanvasContent = () => {
       <div>
         <Stage width={600} height={400}>
           <Layer>
-            <Text text={name} y={20} fontSize={32} fontStyle="bold" width={600} align="center" verticalAlign="middle" />
+            <Text
+              text={userInfo.name}
+              y={20}
+              fontSize={32}
+              fontStyle="bold"
+              width={600}
+              align="center"
+              verticalAlign="middle"
+            />
           </Layer>
           <Layer>
             <Image image={image} alt=""></Image>

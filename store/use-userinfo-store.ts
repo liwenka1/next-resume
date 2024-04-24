@@ -1,23 +1,23 @@
 import { create } from 'zustand'
 
-interface UseUserInfoState {
-  userInfo: {
+interface UseUserinfoState {
+  userinfo: {
     name?: string
     age?: string
     phone?: string
   }
-  setUserInfo: (userInfo: UseUserInfoState['userInfo']) => void
-  name: string
-  setName: (name: UseUserInfoState['name']) => void
+  setUserinfo: (userinfo: UseUserinfoState['userinfo']) => void
+  userinfoImage: CanvasImageSource | null
+  setUserinfoImage: (userinfoImage: UseUserinfoState['userinfoImage']) => void
 }
 
-export const useUserInfoStore = create<UseUserInfoState>((set) => ({
-  userInfo: {
+export const useUserinfoStore = create<UseUserinfoState>((set) => ({
+  userinfo: {
     name: '李文凯',
     age: '18',
     phone: '123412'
   },
-  setUserInfo: (userInfo) => set({ userInfo }),
-  name: '',
-  setName: (name) => set({ name })
+  setUserinfo: (userinfo) => set({ userinfo }),
+  userinfoImage: null,
+  setUserinfoImage: (userinfoImage) => set({ userinfoImage })
 }))

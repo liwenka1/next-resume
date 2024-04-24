@@ -1,13 +1,11 @@
 import CanvasContent from './canvas-content'
 import LeftPanel from './left-panel'
-import RightPanel from './right-panel'
 
 const Main = () => {
   return (
-    <main className="flex flex-1">
+    <main className="flex flex-1 justify-between">
       <LeftPanel />
       <CanvasContent />
-      <RightPanel />
     </main>
   )
 }

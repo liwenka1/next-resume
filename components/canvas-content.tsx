@@ -1,30 +1,19 @@
 'use client'
 
-import { Stage, Layer, Text, Image, Rect, Shape } from 'react-konva'
-import html2canvas from 'html2canvas'
+import { Stage, Layer, Text, Image } from 'react-konva'
 
-import { useUserInfoStore } from '@/store/use-userinfo-store'
-import { useEffect, useRef, useState } from 'react'
+import { useUserinfoStore } from '@/store/use-userinfo-store'
 
 const CanvasContent = () => {
-  const { userInfo } = useUserInfoStore()
-  const [image, setImage] = useState<CanvasImageSource>()
+  const { userinfo, userinfoImage } = useUserinfoStore()
 
-  useEffect(() => {
-    const element = document.getElementById('htmlElement')
-    if (element) html2canvas(element).then((canvas) => setImage(canvas))
-  }, [])
-
-  return (
-    <div>
-      <div id="htmlElement">
-        <span className="text-red-500">测试</span>
-      </div>
-      <div>
+  if (userinfoImage) {
+    return (
+      <div className="w-1/2">
         <Stage width={600} height={400}>
           <Layer>
             <Text
-              text={userInfo.name}
+              text={userinfo.name}
               y={20}
               fontSize={32}
               fontStyle="bold"
@@ -34,17 +23,17 @@ const CanvasContent = () => {
             />
           </Layer>
           <Layer>
-            <Image image={image} alt=""></Image>
+            <Image image={userinfoImage} alt=""></Image>
           </Layer>
           <Layer>
-            {Object.values(userInfo).map((item, index) => (
+            {Object.values(userinfo).map((item, index) => (
               <Text key={index} text={item} x={200 + index * 100} y={80} fontSize={16} />
             ))}
           </Layer>
         </Stage>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default CanvasContent

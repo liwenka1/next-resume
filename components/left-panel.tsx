@@ -1,5 +1,6 @@
 'use client'
 
+import MyEditor from './editor'
 import { useUserinfoStore } from '@/store/use-userinfo-store'
 
 const LeftPanel = () => {
@@ -18,6 +19,7 @@ const LeftPanel = () => {
         <label>Phone:</label>
         <input type="tel" value={phone} onChange={(e) => setUserinfo({ ...userinfo, phone: e.target.value })} />
       </form>
+      <MyEditor />
     </div>
   )
 }

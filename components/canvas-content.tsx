@@ -14,7 +14,7 @@ const CanvasContent = () => {
           <Layer>
             <Text
               text={userinfo.name}
-              y={20}
+              y={0}
               fontSize={32}
               fontStyle="bold"
               width={600}
@@ -23,13 +23,13 @@ const CanvasContent = () => {
             />
           </Layer>
           <Layer>
-            <Image image={userinfoImage} alt=""></Image>
+            <Image y={0} image={userinfoImage} alt=""></Image>
           </Layer>
-          <Layer>
+          {/* <Layer>
             {Object.values(userinfo).map((item, index) => (
               <Text key={index} text={item} x={200 + index * 100} y={80} fontSize={16} />
             ))}
-          </Layer>
+          </Layer> */}
         </Stage>
       </div>
     )

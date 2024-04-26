@@ -1,14 +1,14 @@
-import '@wangeditor/editor/dist/css/style.css' // 引入 css
-
 import { useState, useEffect } from 'react'
+
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
 import { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
-
 import html2canvas from 'html2canvas'
 
-import { useUserinfoStore } from '@/store/use-userinfo-store'
+interface EditorContentProps {
+  setCanvasImage: (Canvasmage: CanvasImageSource | null) => void
+}
 
-function MyEditor() {
+const EditorContent: React.FC<EditorContentProps> = ({ setCanvasImage }) => {
   // editor 实例
   const [editor, setEditor] = useState<IDomEditor | null>(null)
 
@@ -32,32 +32,31 @@ function MyEditor() {
     }
   }, [editor])
 
-  const { setUserinfoImage } = useUserinfoStore()
   useEffect(() => {
     const element = editor?.getEditableContainer() as HTMLElement
-    if (element) html2canvas(element).then((canvas) => setUserinfoImage(canvas))
-  }, [setUserinfoImage, html, editor])
+    if (element) html2canvas(element).then((canvas) => setCanvasImage(canvas))
+  }, [html, editor, setCanvasImage])
 
   return (
-    <div className="prose dark:prose-invert" id="htmlElement">
-      <div style={{ border: '1px solid #ccc', zIndex: 100 }}>
+    <div className="prose dark:prose-invert">
+      <div className="border border-solid border-gray-300">
         <Toolbar
+          className="border border-solid border-gray-300"
           editor={editor}
           defaultConfig={toolbarConfig}
           mode="simple"
-          style={{ borderBottom: '1px solid #ccc' }}
         />
         <Editor
+          className="h-32 overflow-y-scroll"
           defaultConfig={editorConfig}
           value={html}
           onCreated={setEditor}
           onChange={(editor) => setHtml(editor.getHtml())}
           mode="simple"
-          style={{ height: '500px', overflowY: 'hidden' }}
         />
       </div>
     </div>
   )
 }
 
-export default MyEditor
+export default EditorContent

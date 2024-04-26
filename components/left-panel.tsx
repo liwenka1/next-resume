@@ -1,10 +1,10 @@
 'use client'
 
-import MyEditor from './editor'
+import EditorContent from './editor-content'
 import { useUserinfoStore } from '@/store/use-userinfo-store'
 
 const LeftPanel = () => {
-  const { userinfo, setUserinfo } = useUserinfoStore()
+  const { userinfo, setUserinfo, setUserinfoImage } = useUserinfoStore()
   const { name, age, phone } = userinfo
 
   return (
@@ -19,7 +19,7 @@ const LeftPanel = () => {
         <label>Phone:</label>
         <input type="tel" value={phone} onChange={(e) => setUserinfo({ ...userinfo, phone: e.target.value })} />
       </form>
-      <MyEditor />
+      <EditorContent setCanvasImage={setUserinfoImage} />
     </div>
   )
 }

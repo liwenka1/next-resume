@@ -5,7 +5,7 @@ const Main = () => {
   return (
     <main className="flex flex-1 justify-between">
       <LeftPanel />
-      <CanvasContent />
+      {/* <CanvasContent /> */}
     </main>
   )
 }

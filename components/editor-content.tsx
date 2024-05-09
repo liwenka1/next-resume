@@ -1,4 +1,4 @@
-import { createElement, useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import { Plate } from '@udecode/plate-common'
 import html2canvas from 'html2canvas'
@@ -46,7 +46,7 @@ const EditorContent: React.FC<EditorContentProps> = ({ setCanvasImage }) => {
   return (
     <div id="htmlElement">
       <Plate initialValue={initialValue} onChange={run}>
-        <Editor placeholder="Type..." />
+        <Editor className="border-0" placeholder="Type..."></Editor>
       </Plate>
     </div>
   )
